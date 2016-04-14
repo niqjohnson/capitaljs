@@ -152,14 +152,46 @@ cashFlow( {
 */
 ```
 
-```
-var cagr = require('capitaljs/compoundAnnualGrowthRate');
+### Compound annual growth rate
 
-cagr({
-  startValue: 100000,
-  endValue: 50000,
+Compound annual growth rate calculates a compounded annual rate of return on an investment. It’s basically the inverse of the [interest calculation](#interest) with `compound: true`.
+
+#### Options
+
+Option | Format | Details
+------ | ------ | -------
+`startValue` | number | Starting value of the investment
+`endValue` | number | Ending values of the investment
+`years` | number | Length of the investment, in years
+
+#### Returns
+
+Property | Format | Details
+-------- | ------ | -------
+`percent` | number | Compound annual growth rate of the investment, as an unrounded percent
+`raw` | number | Raw compound annual growth rate of the investment
+`rounded` | number | Raw compound annual growth rate of the investment, rounded to the nearest thousandth
+
+#### Example
+
+```js
+var compoundAnnualGrowthRate = require('capitaljs/compoundAnnualGrowthRate');
+
+// What’s the compound annual growth rate of an investment that started at
+// $50,000 and grew to $100,000 in 10 years?
+compoundAnnualGrowthRate( {
+  startValue: 50000,
+  endValue: 100000,
   years: 10
-});
+} );
+
+/*
+{
+  percent: 7.199999999999999,
+  raw: 0.07177346253629313,
+  rounded: 0.072
+}
+*/
 ```
 
 ```
