@@ -46,7 +46,7 @@ var rate = cagr({...});
 
 ### Amortization
 
-Calculate the monthly payment ofan amortizing loan (like a mortgage) and how the loan has amortized after a specified period of time.
+Calculate the monthly payment of an amortizing loan (like a mortgage) and how the loan has amortized after a specified period of time.
 
 #### Options
 
@@ -202,8 +202,8 @@ Calculate the rate of return on an investment, accounting for inflation over the
 
 Option | Format | Details
 ------ | ------ | -------
-`investmentReturn` | number | Investment’s lifetime rate of return, as a decimal
-`inflationRate` | number | Inflation rate over the lifetime of the investment, as a decimal
+`investmentReturn` | number | Investment’s lifetime rate of return, as a decimal (so “8%” is ".06")
+`inflationRate` | number | Inflation rate over the lifetime of the investment, as a decimal (so “3%” is “.03”)
 
 #### Returns
 
@@ -214,7 +214,7 @@ A single number, the inflation-adjusted rate of return, as a percent rounded to 
 ```js
 var inflationAdjustedReturn = require('capitaljs/inflationAdjustedReturn');
 
-// Adjusting for inflation, what’s the rate of return for an investment that
+// Adjusting for a 3% inflation rate, what’s the rate of return for an investment that
 // grew by 8%?
 inflationAdjustedReturn( {
   investmentReturn: .08,
@@ -224,15 +224,62 @@ inflationAdjustedReturn( {
 // 4.85
 ```
 
-```
+### Interest accrued
+
+Calculate how much interest has been earned on an initial investment after a period of time.
+
+#### Options
+
+Option | Format | Details
+------ | ------ | -------
+`principal` | number | Initial amount invested
+`rate` | number | Periodic interest rate, as a percent
+`periods` | number | Years since the investment was started
+`compoundings` | number | How often the interest rate is compounded per year (12 would be monthly, 4 is quarterly, 1 is yearly)
+
+#### Returns
+
+Property | Format | Details
+-------- | ------ | -------
+`interest` | number | Total interest earned on the investment
+`total` | number | Total current value of the investment, rounded to the nearest cent
+
+#### Examples
+
+```js
 var interest = require('capitaljs/interest');
 
-interest({
-  principal: 100000,
-  rate: .06,
-  years: 10,
-  compounding: true
-});
+// What’s a $10,000 investment with a 6% interest rate that compounds yearly
+// worth after 10 years
+interest( {
+  principal: 10000,
+  rate: 6,
+  periods: 10,
+  compoundings: 1
+} );
+
+/*
+{
+  interest: 7908.48,
+  total: 17908.48
+}
+*/
+
+// What’s a $10,000 investment with a 6% interest rate that compounds monthly
+// worth after 10 years
+interest( {
+  principal: 10000,
+  rate: 6,
+  periods: 10,
+  compoundings: 12
+} );
+
+/*
+{
+  interest: 8193.970000000001,
+  total: 18193.97
+}
+*/
 ```
 
 ```
