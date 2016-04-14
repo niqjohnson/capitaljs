@@ -46,7 +46,7 @@ var rate = cagr({...});
 
 ### Amortization
 
-Amortization is paying off a loan, like a mortgage, with a fixed payment over a fixed amount of time. The amortization formula in Capital.js takes in loan terms and returns details about how the loan as amortized after a specified period of time.
+Calculate the monthly payment ofan amortizing loan (like a mortgage) and how the loan has amortized after a specified period of time.
 
 #### Options
 
@@ -100,7 +100,7 @@ amortization( {
 
 ### Cash flow
 
-Cash flow calculates how much money is left after subtracting expenses from income.
+Calculate how much money is left after subtracting expenses from income.
 
 #### Options
 
@@ -154,7 +154,7 @@ cashFlow( {
 
 ### Compound annual growth rate
 
-Compound annual growth rate calculates a compounded annual rate of return on an investment. It’s basically the inverse of the [interest calculation](#interest) with `compound: true`.
+Calculate a compounded annual rate of return on an investment (basically the inverse of the [interest calculation](#interest) with `compound: true`).
 
 #### Options
 
@@ -196,7 +196,7 @@ compoundAnnualGrowthRate( {
 
 ### Inflation-adjusted return
 
-Inflation-adjusted return calculates the rate of return on an investment, accounting for inflation over the lifetime of the investment.
+Calculate the rate of return on an investment, accounting for inflation over the lifetime of the investment.
 
 #### Options
 
