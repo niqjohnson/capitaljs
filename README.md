@@ -98,13 +98,58 @@ amortization( {
 */
 ```
 
-```
-var cash = require('capitaljs/cashFlow');
+### Cash flow
 
-cash({
+Cash flow calculates how much money is left after subtracting expenses from income.
+
+#### Options
+
+Option | Format | Details
+------ | ------ | -------
+`income` | positive number or array | Total income or an array with all sources of income
+`expenses` | positive number or array | Total expenses or an array with all expenses
+
+#### Returns
+
+Property | Format | Details
+-------- | ------ | -------
+`cash` | number | Total cash left over after subtracting expenses from income
+`expenses` | number | Total expenses
+`income` | number | Total income
+
+#### Examples
+
+```js
+var cashFlow = require('capitaljs/cashFlow');
+
+// How much money is left over given $50,000 of expenses and a $100,000 income?
+cashFlow( {
   income: 100000,
   expenses: 50000
-});
+} );
+
+/*
+{
+  cash: 50000,
+  expenses: 50000,
+  income: 100000
+}
+*/
+
+// How much money is left over given a bunch of different income sources and
+// a bunch of different expenses?
+cashFlow( {
+  income: [300, 14000, 189],
+  expenses: [90, 681, 15980, 670]
+} );
+
+/*
+{
+  cash: -2932,
+  expenses: 17421,
+  income: 14489
+}
+*/
 ```
 
 ```
