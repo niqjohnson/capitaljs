@@ -282,13 +282,43 @@ interest( {
 */
 ```
 
-```
-var roi = require('capitaljs/returnOnInvestment');
+### Return on investment
 
-roi({
-  earnings: 5000,
-  initialInvestment: 100000
-});
+Calculate the return on an investment.
+
+#### Options
+
+Option | Format | Details
+------ | ------ | -------
+`earnings` | number | Final value of the investment
+`initialInvestment` | number | Initial value of the investment
+
+#### Returns
+
+Property | Format | Details
+-------- | ------ | -------
+`percent` | number | Return on investment, as an unrounded percent
+`raw` | number | Raw return on investment
+`rounded` | number | Raw return on investment, rounded to the nearest ten thousandth
+
+#### Example
+
+```js
+var returnOnInvestment = require('capitaljs/returnOnInvestment');
+
+// What’s the return on a $70,000 investment that grew to $89,700?
+returnOnInvestment( {
+  earnings: 89700,
+  initialInvestment: 70000
+} );
+
+/*
+{
+  percent: 28.139999999999997,
+  raw: 0.2814285714285714,
+  rounded: 0.2814
+}
+*/
 ```
 
 ## Contributing
