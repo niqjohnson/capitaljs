@@ -194,13 +194,34 @@ compoundAnnualGrowthRate( {
 */
 ```
 
-```
-var iar = require('capitaljs/inflationAdjustedReturn');
+### Inflation-adjusted return
 
-iar({
+Inflation-adjusted return calculates the rate of return on an investment, accounting for inflation over the lifetime of the investment.
+
+#### Options
+
+Option | Format | Details
+------ | ------ | -------
+`investmentReturn` | number | Investment’s lifetime rate of return, as a decimal
+`inflationRate` | number | Inflation rate over the lifetime of the investment, as a decimal
+
+#### Returns
+
+A single number, the inflation-adjusted rate of return, as a percent rounded to the nearest hundredth
+
+#### Example
+
+```js
+var inflationAdjustedReturn = require('capitaljs/inflationAdjustedReturn');
+
+// Adjusting for inflation, what’s the rate of return for an investment that
+// grew by 8%?
+inflationAdjustedReturn( {
   investmentReturn: .08,
   inflationRate: .03
-});
+} );
+
+// 4.85
 ```
 
 ```
