@@ -53,7 +53,7 @@ Calculate the monthly payment of an amortizing loan (like a mortgage) and how th
 Option | Format | Details
 ------ | ------ | -------
 `amount` | number | Total amount of the loan
-`rate` | number | Loan’s annual interest rate
+`rate` | number | Annual interest rate of the loan
 `totalTerm` | number | Total length of the loan, in months
 `amortizeTerm` | number | Point in time after the start of the loan you’d like to check the amortization, in months
 
@@ -154,14 +154,14 @@ cashFlow( {
 
 ### Compound annual growth rate
 
-Calculate a compounded annual rate of return on an investment (basically the inverse of the [interest calculation](#interest) with `compound: true`).
+Calculate a compounded annual rate of return on an investment.
 
 #### Options
 
 Option | Format | Details
 ------ | ------ | -------
 `startValue` | number | Starting value of the investment
-`endValue` | number | Ending values of the investment
+`endValue` | number | Ending value of the investment
 `years` | number | Length of the investment, in years
 
 #### Returns
@@ -196,25 +196,25 @@ compoundAnnualGrowthRate( {
 
 ### Inflation-adjusted return
 
-Calculate the rate of return on an investment, accounting for inflation over the lifetime of the investment.
+Calculate the return on an investment, accounting for inflation over the lifetime of the investment.
 
 #### Options
 
 Option | Format | Details
 ------ | ------ | -------
-`investmentReturn` | number | Investment’s lifetime rate of return, as a decimal (so “8%” is ".06")
+`investmentReturn` | number | Investment’s lifetime return, as a decimal (so “8%” is ".06")
 `inflationRate` | number | Inflation rate over the lifetime of the investment, as a decimal (so “3%” is “.03”)
 
 #### Returns
 
-A single number, the inflation-adjusted rate of return, as a percent rounded to the nearest hundredth
+A single number, the inflation-adjusted return, as a percent rounded to the nearest hundredth
 
 #### Example
 
 ```js
 var inflationAdjustedReturn = require('capitaljs/inflationAdjustedReturn');
 
-// Adjusting for a 3% inflation rate, what’s the rate of return for an investment that
+// Adjusting for a 3% inflation rate, what’s the return for an investment that
 // grew by 8%?
 inflationAdjustedReturn( {
   investmentReturn: .08,
