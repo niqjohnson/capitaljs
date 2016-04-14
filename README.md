@@ -42,19 +42,60 @@ var cagr = require('capitaljs/compoundAnnualGrowthRate');
 var rate = cagr({...});
 ```
 
-## Current formulae:
+## Current formulae
 
-Better docs and examples coming soon.
+### Amortization
 
-```
+Amortization is paying off a loan, like a mortgage, with a fixed payment over a fixed amount of time. The amortization formula in Capital.js takes in loan terms and returns details about how the loan as amortized after a specified period of time.
+
+#### Options
+
+Option | Format | Details
+------ | ------ | -------
+`amount` | number | Total amount of the loan
+`rate` | number | Loan’s annual interest rate
+`totalTerm` | number | Total length of the loan, in months
+`amortizeTerm` | number | Point in time after the start of the loan you’d like to check the amortization, in months
+
+#### Returns
+
+Property | Format | Details
+-------- | ------ | -------
+`balance` | number | Total amount of principal left to be paid after the number of months specified in `amortizeTerm`
+`balanceRound` | string | `balance` rounded to the nearest cent
+`interest` | number | Total amount of interest paid on the loan after the number of months specified in `amortizeTerm`
+`interestRound` | string | `interest` rounded to the nearest cent
+`payment` | number | Monthly payment
+`paymentRound` | string | `payment` rounded to the nearest cent
+`principal` | number | Total amount of principal paid on the loan after the number of months specified in `amortizeTerm`
+`principalRound` | string | `principal` rounded to the nearest cent
+
+#### Example
+
+```js
 var amortization = require('capitaljs/amortization');
 
-amortization({
+// What’s the amortization like after 5 years for a 30-year, $180,000 mortgage
+// with a 4.25% interest rate?
+amortization( {
   amount: 180000,
   rate: 4.25,
   totalTerm: 360,
   amortizeTerm: 60
-});
+} );
+
+/*
+{
+  balance: 163453.85387151438,
+  balanceRound: "163453.85",
+  interest: 36583.362108097754,
+  interestRound: "36583.36",
+  payment: 885.4918039430557,
+  paymentRound: "885.49",
+  principal: 16546.146128485594,
+  principalRound: "16546.15"
+}
+*/
 ```
 
 ```
